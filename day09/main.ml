@@ -76,6 +76,7 @@ let rec apply_n_times n f x =
 let move_with_set dir rope_and_set =
   let rope, set = rope_and_set in
   let new_rope = move_one dir rope in
+  Printf.printf "%s\n" (pp_pos (snd new_rope));
   (new_rope, StrSet.add (pp_pos (snd new_rope)) set)
 ;;
 
@@ -87,7 +88,7 @@ let reduce rope_and_set move =
 let start = ((0, 0), (0, 0));;
 
 let moves = parse_lines (open_in "input.txt") [] in
-let init_set = StrSet.add (pp_pos (0,0)) StrSet.empty in
+let init_set = StrSet.empty in
 let rope, set = List.fold_left reduce (start, init_set) moves in
 Printf.printf "Part 1: %d" (StrSet.cardinal set)
 ;;

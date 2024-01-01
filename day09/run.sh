@@ -2,5 +2,7 @@
 
 set -e
 
-ocaml main.ml
+#ocaml main.ml
+javac Main.java
+java -cp . Main
 
